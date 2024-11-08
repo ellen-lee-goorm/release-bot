@@ -13,7 +13,7 @@ const app = new App({
 });
 
 const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN,
+  auth: process.env.ACCESS_TOKEN,
 });
 
 const owner = process.env.DISPATCH_OWNER;
