@@ -38,7 +38,9 @@ app.action("complete_write_release_note", async ({ ack }) => {
       },
     });
 
-    console.log("완료 요청 후 Repository dispatch 완료");
+    console.log("완료 요청에 따라 Repository dispatch 를 전송");
+    console.log("App을 종료합니다");
+    app.stop();
   } catch (error) {
     console.error(`error - post dispatch: ${error}`);
   }
