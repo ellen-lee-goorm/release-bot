@@ -1,0 +1,29 @@
+name: 릴리즈 봇 실행하기
+
+on:
+  workflow_dispatch:
+  # FIXME - 릴리즈 브랜치 같이 열릴 때 열기
+
+env:
+  SLACK_BOT_TOKEN: ${{secrets.SLACK_BOT_TOKEN}}
+  SLACK_SIGNING_SECRET: ${{secrets.SLACK_SIGNING_SECRET}}
+  SLACK_APP_TOKEN: ${{secrets.SLACK_APP_TOKEN}}
+  ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
+  DISPATCH_OWNER: ${{secrets.DISPATCH_OWNER}}
+  DISPATCH_REPO: ${{secrets.DISPATCH_REPO}}
+  DISPATCH_EVENT_TYPE: ${{secrets.DISPATCH_EVENT_TYPE}}
+
+jobs:
+  start-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: |
+          yarn install
+
+      - name: Start Slack bot
+        run: yarn start
